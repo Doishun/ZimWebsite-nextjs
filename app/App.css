@@ -1,0 +1,165 @@
+.App {
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: "Arial", sans-serif;
+}
+
+.header {
+  position: relative;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  min-height: 300px;
+  overflow: hidden;
+  /* 角丸に画像を合わせる */
+}
+
+.header-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.5);
+  /* オーバーレイ */
+  color: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.header h1,
+.header p {
+  position: relative;
+  z-index: 2;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin: 0 0 10px 0;
+}
+
+.header p {
+  font-size: 1.2rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.main-content {
+  padding: 20px 0;
+}
+
+/* カードのグリッドレイアウト */
+.tour-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+/* 各カードのスタイル */
+.tour-card {
+  background: white;
+  /* 白背景 */
+  border: 2px solid #4a9b4e;
+  /* 緑の枠線 */
+  border-radius: 10px;
+  /* 角を丸く */
+  padding: 20px;
+  /* 内側の余白 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* 影 */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.tour-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tour-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+/* ホバー時の動き */
+.tour-card:hover {
+  transform: translateY(-5px);
+  /* 浮き上がる */
+}
+
+/* フィルターボタンのスタイル */
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.filter-btn {
+  background: #f4f4f4;
+  border: 2px solid #4a9b4e;
+  color: #2c5f2d;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  background: #e8f5e8;
+  transform: translateY(-2px);
+}
+
+.filter-btn.active {
+  background: #4a9b4e;
+  color: white;
+}
+
+/* CTAセクション */
+.contact {
+  text-align: center;
+  padding: 40px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+}
+
+.contact h3 {
+  color: #2c5f2d;
+  margin-bottom: 15px;
+}
+
+.book-button {
+  display: inline-block;
+  padding: 15px 30px;
+  background: #4a9b4e;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+  margin-top: 20px;
+}
+
+.book-button:hover {
+  background: #2c5f2d;
+}

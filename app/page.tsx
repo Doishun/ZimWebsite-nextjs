@@ -1,103 +1,170 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import React, { useEffect } from 'react';
+import Image from 'next/image';
+import './App.css';
+import { Tour, FilterType, TourType } from './types/tour';
+
+function App() {
+
+  // TypeScript型定義を活用したツアーデータ
+  const tours: Tour[] = [
+    {
+      id: 1,
+      title: "Victoria Falls Adventure",
+      description: "Experience the magnificent Victoria Falls, one of the Seven Wonders of the World.",
+      duration: 3,
+      type: "adventure" as TourType,
+      category: "natural",
+      image: "/images/tours/Tour of the falls-12.jpg"
+    },
+    {
+      id: 2,
+      title: "Hwange Safari",
+      description: "Explore Zimbabwe's largest national park and witness incredible wildlife.",
+      duration: 5,
+      type: "wildlife" as TourType,
+      category: "safari",
+      image: "/images/tours/Game Drive-2.jpg"
+    },
+    {
+      id: 3,
+      title: "Traditional Village Tour",
+      description: "Discover the ancient city and learn about Zimbabwe's rich history.",
+      duration: 2,
+      type: "cultural" as TourType,
+      category: "history",
+      image: "/images/tours/Traditional Village tour-3.jpg"
+    }
+  ];
+
+  // TypeScript型定義を活用した状態管理
+  const [selectedFilter, setSelectedFilter] = React.useState<FilterType>('all');
+
+  // タイトルの更新
+  useEffect(() => {
+    document.title = `Zimbabwe Tours - ${selectedFilter}`;
+  }, [selectedFilter]);
+
+  // TypeScript型安全性を活用したフィルタリング関数
+  const filteredTours: Tour[] = tours.filter((tour: Tour) => {
+    if (selectedFilter === 'all') return true;
+    if (selectedFilter === 'short') return tour.duration <= 3;
+    if (selectedFilter === 'long') return tour.duration >= 5;
+    return tour.type === selectedFilter;
+  });
+
+  //アニメーション効果
+  useEffect(() => {
+    const cards = document.querySelectorAll('.tour-card');
+    cards.forEach((card, index) => {
+      setTimeout(() => {
+        card.classList.add('visible');
+      }, index * 200);
+    });
+  }, [filteredTours]);
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+    <div className="App">
+      <header className="header">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
+          src="/images/tours/Vicfalls15.jpg"
+          alt="ジンバブエの美しい風景"
+          className="header-bg"
+          fill
+          style={{ objectFit: 'cover' }}
           priority
         />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div className="header-content">
+          <h1>🇿🇼 Zimbabwe Adventure Tours</h1>
+          <p>Discover the Beauty of Zimbabwe</p>
         </div>
+      </header>
+
+      <main className="main-content">
+        <section className="hero">
+          <h2>Experience Amazing Zimbabwe</h2>
+          <p>Join us for unforgettable adventures through Zimbabwe&apos;s stunning landscapes, wildlife, and culture.</p>
+        </section>
+
+        <section className="tours">
+          <h3>Popular Tours</h3>
+
+          {/* フィルターボタンを追加 */}
+          <div className="filter-buttons">
+            <button
+              className={selectedFilter === 'all' ? 'filter-btn active' : 'filter-btn'}
+              onClick={() => setSelectedFilter('all')}
+            >
+              All Tours
+            </button>
+            <button
+              className={selectedFilter === 'short' ? 'filter-btn active' : 'filter-btn'}
+              onClick={() => setSelectedFilter('short')}
+            >
+              Short (≤3 days)
+            </button>
+            <button
+              className={selectedFilter === 'long' ? 'filter-btn active' : 'filter-btn'}
+              onClick={() => setSelectedFilter('long')}
+            >
+              Long (≥5 days)
+            </button>
+            <button
+              className={selectedFilter === 'adventure' ? 'filter-btn active' : 'filter-btn'}
+              onClick={() => setSelectedFilter('adventure')}
+            >
+              Adventure
+            </button>
+            <button
+              className={selectedFilter === 'wildlife' ? 'filter-btn active' : 'filter-btn'}
+              onClick={() => setSelectedFilter('wildlife')}
+            >
+              Wildlife
+            </button>
+            <button
+              className={selectedFilter === 'cultural' ? 'filter-btn active' : 'filter-btn'}
+              onClick={() => setSelectedFilter('cultural')}
+            >
+              Cultural
+            </button>
+          </div>
+        </section>
+
+        <div className="tour-grid">
+          {filteredTours.map((tour: Tour) => (
+            <div key={tour.id} className="tour-card">
+              <div style={{ position: 'relative', width: '100%', height: '200px' }}>
+                <Image
+                  src={tour.image}
+                  alt={tour.title}
+                  fill
+                  style={{ objectFit: 'cover', borderRadius: '5px' }}
+                />
+              </div>
+              <h4>{tour.title}</h4>
+              <p>{tour.description}</p>
+              <p><strong>Duration:</strong> {tour.duration} days</p>
+              <p><strong>Type:</strong> {tour.type}</p>
+            </div>
+          ))}
+        </div>
+
+        <section className="contact">
+          <h3>Ready to Book?</h3>
+          <p>Contact us to plan your perfect Zimbabwe adventure!</p>
+          <a
+            href="https://forms.google.com/your-form-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="book-button"
+          >
+            Book Your Tour
+          </a>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
+
+export default App;

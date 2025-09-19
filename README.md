@@ -1,36 +1,143 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🇿🇼 Zimbabwe Adventure Tours
 
-## Getting Started
+ジンバブエの魅力的なツアーを紹介する Web サイト
 
-First, run the development server:
+## 📖 プロジェクト概要
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+友人のツアー事業支援とバックエンド技術学習を目的とした、ジンバブエツアー紹介サイトです。
+
+### 🎯 目的
+
+- 個人ツアー事業のオンライン展開支援
+- Next.js + TypeScript + Supabase の実践学習
+- モダン Web 開発技術の習得
+
+## 🛠️ 技術スタック
+
+### フロントエンド
+
+- **Next.js 15.5.3** - React フレームワーク
+- **TypeScript** - 型安全な開発
+- **CSS3** - スタイリング（今後 Emotion に移行予定）
+
+### バックエンド
+
+- **Supabase** - Backend as a Service
+  - PostgreSQL データベース
+  - リアルタイム機能
+  - 認証・ストレージ
+
+### インフラ
+
+- **Vercel** - デプロイ・ホスティング
+- **GitHub** - バージョン管理
+
+## 📁 プロジェクト構造
+
+```
+ZimWebsite-nextjs/
+├── app/
+│   ├── page.tsx          # メインページコンポーネント
+│   ├── layout.tsx        # ルートレイアウト
+│   ├── App.css          # コンポーネントスタイル
+│   ├── globals.css      # グローバルスタイル
+│   └── types/
+│       └── tour.ts      # TypeScript型定義
+├── public/
+│   └── images/
+│       └── tours/       # ツアー画像
+├── lib/
+│   └── supabase.ts      # Supabase設定（予定）
+└── docs/
+    ├── setup.md         # セットアップ手順
+    └── supabase-integration.md  # Supabase連携手順
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 クイックスタート
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 前提条件
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Node.js 18+
+- npm または yarn
 
-## Learn More
+### インストール・起動
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# リポジトリクローン
+git clone https://github.com/[username]/ZimWebsite-nextjs.git
+cd ZimWebsite-nextjs
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# 依存関係インストール
+npm install
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# 開発サーバー起動
+npm run dev
+```
 
-## Deploy on Vercel
+ブラウザで `http://localhost:3000` にアクセス
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ✨ 現在の機能
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [x] レスポンシブデザインのツアー一覧表示
+- [x] カテゴリ別フィルタリング機能
+- [x] 画像最適化（Next.js Image）
+- [x] アニメーション効果
+- [x] TypeScript 型安全性
+
+## 🔄 開発ロードマップ
+
+### Phase 1: 基盤構築 ✅
+
+- [x] Next.js + TypeScript セットアップ
+- [x] 基本 UI コンポーネント作成
+- [x] 静的データでの動作確認
+
+### Phase 2: Supabase 連携 🚧
+
+- [ ] Supabase プロジェクト作成
+- [ ] データベース設計・構築
+- [ ] API クライアント実装
+- [ ] CRUD 機能実装
+
+### Phase 3: 機能拡張 📋
+
+- [ ] 管理者向け CMS 機能
+- [ ] 画像アップロード機能
+- [ ] Google Forms 連携
+- [ ] SEO 最適化
+
+### Phase 4: 本番化 📋
+
+- [ ] Emotion 移行
+- [ ] パフォーマンス最適化
+- [ ] Vercel デプロイ
+- [ ] ドメイン設定
+
+## 📚 学習ポイント
+
+このプロジェクトを通じて習得可能な技術：
+
+- **フロントエンド**: React/Next.js, TypeScript, CSS-in-JS
+- **バックエンド**: Supabase, PostgreSQL, API 設計
+- **インフラ**: Vercel, 環境変数管理
+- **開発プロセス**: Git, 段階的リファクタリング
+
+## 🤝 コントリビューション
+
+1. このリポジトリをフォーク
+2. 機能ブランチを作成 (`git checkout -b feature/amazing-feature`)
+3. 変更をコミット (`git commit -m 'Add amazing feature'`)
+4. ブランチにプッシュ (`git push origin feature/amazing-feature`)
+5. プルリクエストを作成
+
+## 📄 ライセンス
+
+このプロジェクトは MIT ライセンスの下で公開されています。
+
+## 📞 お問い合わせ
+
+プロジェクトに関する質問やフィードバックがございましたら、Issues をご利用ください。
+
+---
+
+**Built with ❤️ for Zimbabwe Tourism**
