@@ -7,14 +7,35 @@ export type TourCategory = "natural" | "safari" | "history";
 export type FilterType = "all" | "short" | "long" | TourType;
 
 // interface: オブジェクトの形状定義、拡張可能
-export interface Tour {
+export interface BaseTour {
   id: number;
   title: string;
   description: string;
+  image: string;
+}
+
+// interfaceの拡張（extends）
+export interface Tour extends BaseTour {
   duration: number;
   type: TourType;
-  category: TourCategory;
-  image: string;
+  category: string;
+  price?: number; // オプショナル
+  rating?: number; // 1-5の評価
+  maxParticipants?: number;
+  isPopular?: boolean;
+}
+
+// さらなる拡張
+export interface DetailedTour extends Tour {
+  schedule: DaySchedule[];
+  inclusions: string[];
+  exclusions: string[];
+}
+
+export interface DaySchedule {
+  day: number;
+  activities: string[];
+  accommodation?: string;
 }
 
 // オプショナルプロパティの例
