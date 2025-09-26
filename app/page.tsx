@@ -4,49 +4,13 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import "./App.css";
 import { Tour, FilterType, TourType } from "./types/tour";
+import { useTours } from "../hooks/useTour";
 
 function App() {
-  // TypeScript型定義を活用したツアーデータ
-  const tours: Tour[] = [
-    {
-      id: 1,
-      title: "Victoria Falls Adventure",
-      description:
-        "Experience the magnificent Victoria Falls, one of the Seven Wonders of the World.",
-      duration: 3,
-      type: "adventure" as TourType,
-      category: "natural",
-      image: "/images/tours/Tour of the falls-12.jpg",
-    },
-    {
-      id: 2,
-      title: "Hwange Safari",
-      description:
-        "Explore Zimbabwe's largest national park and witness incredible wildlife.",
-      duration: 5,
-      type: "wildlife" as TourType,
-      category: "safari",
-      image: "/images/tours/Game Drive-2.jpg",
-    },
-    {
-      id: 3,
-      title: "Traditional Village Tour",
-      description:
-        "Discover the ancient city and learn about Zimbabwe's rich history.",
-      duration: 2,
-      type: "cultural" as TourType,
-      category: "history",
-      image: "/images/tours/Traditional Village tour-3.jpg",
-    },
-  ];
+  const { tours, loading, error } = useTours();
 
   // TypeScript型定義を活用した状態管理
   const [selectedFilter, setSelectedFilter] = React.useState<FilterType>("all");
-
-  // タイトルの更新
-  useEffect(() => {
-    document.title = `Zimbabwe Tours - ${selectedFilter}`;
-  }, [selectedFilter]);
 
   // TypeScript型安全性を活用したフィルタリング関数
   const filteredTours: Tour[] = tours.filter((tour: Tour) => {
@@ -55,6 +19,10 @@ function App() {
     if (selectedFilter === "long") return tour.duration >= 5;
     return tour.type === selectedFilter;
   });
+  // タイトルの更新
+  useEffect(() => {
+    document.title = `Zimbabwe Tours - ${selectedFilter}`;
+  }, [selectedFilter]);
 
   //アニメーション効果
   useEffect(() => {
@@ -65,6 +33,35 @@ function App() {
       }, index * 200);
     });
   }, [filteredTours]);
+
+  // ローディング状態
+  if (loading) {
+    return (
+      <div className="App">
+        <div className="loading">
+          <h2>🔄 ツアー情報を読み込み中...</h2>
+          <p>Supabaseからデータを取得しています</p>
+        </div>
+      </div>
+    );
+  }
+
+  // エラー状態
+  if (error) {
+    return (
+      <div className="App">
+        <div className="error">
+          <h2>❌ エラーが発生しました</h2>
+          <p>エラー詳細: {error}</p>
+          <button onClick={() => window.location.reload()}>
+            🔄 再読み込み
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+
 
   return (
     <div className="App">

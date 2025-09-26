@@ -60,3 +60,15 @@ export interface FilterButtonProps {
   onClick: (filter: FilterType) => void;
   children: React.ReactNode;
 }
+
+export interface DatabaseTour {
+  id: number;
+  title: string;
+  description: string;
+  duration: number;
+  type: string;
+  category: string;
+  image: string;
+  created_at: string;
+  updated_at: string;
+}

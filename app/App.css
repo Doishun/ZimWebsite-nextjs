@@ -163,3 +163,64 @@
 .book-button:hover {
   background: #2c5f2d;
 }
+
+/* App.css の最後に追加 */
+.loading,
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.loading h2 {
+  color: #4a9b4e;
+  margin-bottom: 10px;
+}
+
+.loading p {
+  color: #666;
+  font-style: italic;
+}
+
+.error {
+  background-color: #ffebee;
+  border: 2px solid #ffcdd2;
+  border-radius: 12px;
+  margin: 20px;
+}
+
+.error h2 {
+  color: #d32f2f;
+  margin-bottom: 10px;
+}
+
+.error p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.error button {
+  padding: 12px 24px;
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.error button:hover {
+  background-color: #b71c1c;
+}
+
+.tour-date {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #888;
+  font-style: italic;
+}
