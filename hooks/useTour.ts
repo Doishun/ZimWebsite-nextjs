@@ -12,6 +12,9 @@ export const useTours = () => {
         try {
             setLoading(true);
             setError(null);
+            if (!supabase) {
+                throw new Error('Supabase client is not initialized. Please check your environment variables.');
+            }
 
             const { data, error } = await supabase
                 .from("tours")

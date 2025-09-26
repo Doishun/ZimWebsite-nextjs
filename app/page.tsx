@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
 import "./App.css";
-import { Tour, FilterType, TourType } from "./types/tour";
+import { Tour, FilterType } from "./types/tour";
 import { useTours } from "../hooks/useTour";
 
 function App() {
