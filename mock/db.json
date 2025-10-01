@@ -1,0 +1,55 @@
+{
+    "tours": [
+        {
+            "id": 1,
+            "title": "Victoria Falls Adventure",
+            "description": "Experience the magnificent Victoria Falls, one of the Seven Wonders of the World.",
+            "duration": 3,
+            "type": "adventure",
+            "category": "natural",
+            "image": "/images/tours/Tour of the falls-12.jpg",
+            "price": 299,
+            "maxCapacity": 15,
+            "availableSpots": 8,
+            "createdAt": "2024-09-29T10:00:00Z",
+            "updatedAt": "2024-09-29T10:00:00Z"
+        },
+        {
+            "id": 2,
+            "title": "Hwange Safari",
+            "description": "Explore Zimbabwe's largest national park and witness incredible wildlife.",
+            "duration": 5,
+            "type": "wildlife",
+            "category": "safari",
+            "image": "/images/tours/Game Drive-2.jpg",
+            "price": 499,
+            "maxCapacity": 10,
+            "availableSpots": 5,
+            "createdAt": "2024-09-29T11:00:00Z",
+            "updatedAt": "2024-09-29T11:00:00Z"
+        }
+    ],
+    "bookings": [
+        {
+            "id": 1,
+            "tourId": 1,
+            "customerName": "John Doe",
+            "email": "john@example.com",
+            "phone": "+1234567890",
+            "numberOfPeople": 2,
+            "preferredDate": "2024-11-15",
+            "specialRequests": "Vegetarian meals",
+            "status": "confirmed",
+            "createdAt": "2024-09-28T14:30:00Z"
+        }
+    ],
+    "users": [
+        {
+            "id": 1,
+            "email": "admin@zimtours.com",
+            "name": "Admin User",
+            "role": "admin",
+            "createdAt": "2024-09-01T00:00:00Z"
+        }
+    ]
+}
