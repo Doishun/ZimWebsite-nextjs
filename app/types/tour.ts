@@ -1,59 +1,121 @@
 import React from "react";
 
+// ============================================
+// Type Definitions
+// ============================================
+
 // type vs interface の使い分け学習
 // type: union types、プリミティブ型に適している
-export type TourType = "adventure" | "wildlife" | "cultural";
-export type TourCategory = "natural" | "safari" | "history";
-export type FilterType = "all" | "short" | "long" | TourType;
+export type TourType = "safari" | "bridge" | "flight" | "water" | "cultural";
+export type FilterType = "all" | TourType;
 
-// interface: オブジェクトの形状定義、拡張可能
-export interface BaseTour {
+// ============================================
+// Database Tour (Supabaseから返される型)
+// ============================================
+export interface DatabaseTour {
   id: number;
   title: string;
   description: string;
-  image: string;
-}
-
-// interfaceの拡張（extends）
-export interface Tour extends BaseTour {
-  duration: number;
-  type: TourType;
+  detail: string;
+  price: string;
+  duration: string;
+  age: string;
+  type: string;
   category: string;
-  price?: number; // オプショナル
-  rating?: number; // 1-5の評価
-  maxParticipants?: number;
-  isPopular?: boolean;
+  image: string;
+  note: string | null;
+  created_at: string;
+  updated_at: string;
 }
 
-// さらなる拡張
-export interface DetailedTour extends Tour {
-  schedule: DaySchedule[];
-  inclusions: string[];
-  exclusions: string[];
+// ============================================
+// Tour (アプリケーション内で使用する型)
+// ============================================
+export interface Tour {
+  id: number;
+  title: string;
+  description: string;      // 短い説明（カード表示用）
+  detail: string;           // 詳細説明（詳細ページ用）
+  price: string;            // "$27" or "$113~$166"
+  duration: string;         // "2 hours" or "30 minutes"
+  age: string;              // "All ages" or "14 years and above"
+  type: TourType;           // safari | bridge | flight | water | cultural
+  category: string;         // "Safari & Victoria Falls" など
+  image: string;            // "/images/tours/xxx.jpg"
+  note?: string;            // オプション：特記事項
+  created_at: string;
+  updated_at: string;
 }
 
-export interface DaySchedule {
-  day: number;
-  activities: string[];
-  accommodation?: string;
+// ============================================
+// Category（カテゴリー情報）
+// ============================================
+export interface Category {
+  id: string;               // "safari", "bridge" など
+  name: string;             // "Safari & Victoria Falls"
+  icon: string;             // "🦁"
+  type: TourType;           // type と紐づけ
+  description: string;      // カテゴリーの説明
 }
 
-// オプショナルプロパティの例
-export interface TourWithOptionals extends Tour {
-  price?: number;
-  rating?: number;
-  createdBy?: {
-    id?: string;
-    name?: string;
-  };
+// カテゴリー定数
+export const CATEGORIES: Category[] = [
+  {
+    id: "safari",
+    name: "Safari & Victoria Falls",
+    icon: "🦁",
+    type: "safari",
+    description: "ジンバブエの野生動物との出会いとビクトリアフォールズ",
+  },
+  {
+    id: "bridge",
+    name: "Bridge Adventures",
+    icon: "🌉",
+    type: "bridge",
+    description: "ビクトリアフォールズブリッジでのスリリングな体験",
+  },
+  {
+    id: "flight",
+    name: "Flight Adventures",
+    icon: "🚁",
+    type: "flight",
+    description: "空から眺める壮大なビクトリアフォールズ",
+  },
+  {
+    id: "water",
+    name: "Water Adventures",
+    icon: "🚤",
+    type: "water",
+    description: "ザンベジ川でのエキサイティングなウォーターアクティビティ",
+  },
+  {
+    id: "cultural",
+    name: "Cultural & Other Tours",
+    icon: "🏛️",
+    type: "cultural",
+    description: "ジンバブエの文化と伝統を体験",
+  },
+];
+
+// ============================================
+// React Component Props
+// ============================================
+
+// カテゴリーカード用
+export interface CategoryCardProps {
+  category: Category;
+  tourCount: number;
+  priceRange: string;
+  onClick?: (categoryId: string) => void;
 }
 
-// React component props の型定義
+// ツアーカード用
 export interface TourCardProps {
   tour: Tour;
   onClick?: (tour: Tour) => void;
 }
 
+// フィルターボタン用
 export interface FilterButtonProps {
   filter: FilterType;
   isActive: boolean;
@@ -61,14 +123,22 @@ export interface FilterButtonProps {
   children: React.ReactNode;
 }
 
-export interface DatabaseTour {
-  id: number;
-  title: string;
-  description: string;
-  duration: number;
-  type: string;
+// ============================================
+// Utility Types
+// ============================================
+
+// カテゴリー別のツアー統計
+export interface CategoryStats {
   category: string;
-  image: string;
-  created_at: string;
-  updated_at: string;
+  count: number;
+  minPrice: number;
+  maxPrice: number;
+  priceRange: string;
+}
+
+// 価格をパースする関数の戻り値
+export interface ParsedPrice {
+  min: number;
+  max: number;
+  display: string;
 }

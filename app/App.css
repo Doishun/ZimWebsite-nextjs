@@ -224,3 +224,127 @@
   color: #888;
   font-style: italic;
 }
+
+/* ========================================
+   カテゴリーグリッド（ホームページ用）
+   ======================================== */
+
+.categories {
+  padding: 20px 0;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+/* カテゴリーカード */
+.category-card {
+  background: white;
+  border: 3px solid #4a9b4e;
+  border-radius: 15px;
+  padding: 40px 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.category-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  border-color: #2c5f2d;
+}
+
+.category-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  line-height: 1;
+}
+
+.category-card h3 {
+  color: #2c5f2d;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.category-description {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  min-height: 48px;
+}
+
+.category-info {
+  border-top: 2px solid #e8f5e8;
+  padding-top: 15px;
+  margin-top: 15px;
+}
+
+.activity-count {
+  color: #2c5f2d;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.price-range {
+  color: #4a9b4e;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* ヒーローセクション（改善版） */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #e8f5e8 0%, #ffffff 100%);
+  border-radius: 15px;
+  margin-bottom: 50px;
+}
+
+.hero h2 {
+  color: #2c5f2d;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .category-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .category-icon {
+    font-size: 3rem;
+  }
+
+  .category-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .hero {
+    padding: 40px 20px;
+  }
+
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+}
