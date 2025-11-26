@@ -25,7 +25,7 @@ export default function CategoryPage() {
       <div className="App">
         <div className="error">
           <h2>❌ Category not found</h2>
-          <p>カテゴリー "{slug}" は見つかりませんでした</p>
+          <p>カテゴリー &quot;{slug}&quot; は見つかりませんでした</p>
           <Link href="/" className="book-button">
             ← Back to Home
           </Link>
