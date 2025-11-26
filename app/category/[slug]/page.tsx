@@ -93,11 +93,9 @@ export default function CategoryPage() {
       <main className="main-content">
         <div className="tour-grid">
           {tours.map((tour) => (
-            <Link
+            <div
               key={tour.id}
-              href={`/activity/${tour.id}`}
               className="tour-card"
-              style={{ textDecoration: "none", color: "inherit" }}
             >
               <div className="tour-image-container">
                 <img
@@ -134,7 +132,7 @@ export default function CategoryPage() {
                   </div>
                 )}
               </div>
-            </Link>
+            </div>
           ))}
         </div>
 

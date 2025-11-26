@@ -1,16 +1,7 @@
 # Next Actions - Zimbabwe Tour Website
 
-## 🔴 最優先: Victoria Falls データ修正
-
-### 問題
-- Victoria Fallsカテゴリーでアクティビティが表示されない
-- Supabaseデータの更新が正しく反映されていない可能性
-
-### 対応
-1. Supabaseの現在のデータを確認するスクリプトを実行
-2. Tour of the Falls (ID: 1) のデータを再確認
-3. 必要に応じて `update-victoria-falls-category.js` を再実行
-4. ブラウザのハードリフレッシュで確認
+フォント修正
+日本語修正
 
 ---
 
