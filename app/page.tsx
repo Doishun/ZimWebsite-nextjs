@@ -43,7 +43,7 @@ function HomePage() {
       {/* ヘッダー */}
       <header className="header">
         <img
-          src="/images/tours/vicfalls15.jpg"
+          src="/images/tours/tour-of-the-falls-12.jpg"
           alt="Zimbabwe landscape"
           className="header-bg"
         />
