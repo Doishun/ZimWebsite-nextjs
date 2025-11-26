@@ -43,13 +43,10 @@ function HomePage() {
     <div className="App">
       {/* ヘッダー */}
       <header className="header">
-        <Image
-          src="/images/tours/Vicfalls15.jpg"
+        <img
+          src="/images/tours/vicfalls15.jpg"
           alt="Zimbabwe landscape"
           className="header-bg"
-          fill
-          style={{ objectFit: "cover" }}
-          priority
         />
         <div className="header-content">
           <h1>🇿🇼 Zimbabwe Adventure Tours</h1>
@@ -84,16 +81,24 @@ function HomePage() {
                   className="category-card"
                   style={{ textDecoration: "none", color: "inherit" }}
                 >
-                  <div className="category-icon">{category.icon}</div>
-                  <h3>{category.name}</h3>
-                  <p className="category-description">
-                    {category.description}
-                  </p>
-                  <div className="category-info">
-                    <p className="activity-count">
-                      {stats?.count || 0} Activities
+                  <div className="category-image-container">
+                    <img
+                      src={category.image}
+                      alt={category.name}
+                      className="category-image"
+                    />
+                  </div>
+                  <div className="category-card-body">
+                    <h3>{category.name}</h3>
+                    <p className="category-description">
+                      {category.description}
                     </p>
-                    <p className="price-range">{stats?.priceRange || "N/A"}</p>
+                    <div className="category-info">
+                      <p className="activity-count">
+                        {stats?.count || 0} Activities
+                      </p>
+                      <p className="price-range">{stats?.priceRange || "N/A"}</p>
+                    </div>
                   </div>
                 </Link>
               );

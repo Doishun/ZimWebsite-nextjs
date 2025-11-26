@@ -2,7 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useParams } from "next/navigation";
 import { CATEGORIES, TourType } from "../../types/tour";
 import { useToursByCategory } from "../../../hooks/useToursByCategory";
@@ -102,9 +101,7 @@ export default function CategoryPage() {
             >
               <div className="tour-image-container">
                 <img
-                  src={`https://placehold.co/400x250/4a9b4e/white?text=${encodeURIComponent(
-                    tour.title
-                  )}`}
+                  src={tour.image}
                   alt={tour.title}
                   style={{
                     width: "100%",
@@ -150,6 +147,22 @@ export default function CategoryPage() {
             </Link>
           </div>
         )}
+
+        {/* CTAセクション */}
+        <section className="contact">
+          <h3>Ready to Book Your Adventure?</h3>
+          <p>
+            ツアーの詳細を確認して、忘れられないジンバブエの旅を予約しましょう！
+          </p>
+          <a
+            href="https://forms.google.com/your-form-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="book-button"
+          >
+            📅 Contact Us
+          </a>
+        </section>
       </main>
     </div>
   );

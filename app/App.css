@@ -80,8 +80,10 @@
   /* 内側の余白 */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   /* 影 */
-  opacity: 0;
-  transform: translateY(20px);
+  opacity: 1;
+  /* 常に表示 */
+  transform: translateY(0);
+  /* 初期位置 */
   transition: all 0.3s ease;
 }
 
@@ -245,17 +247,43 @@
   background: white;
   border: 3px solid #4a9b4e;
   border-radius: 15px;
-  padding: 40px 30px;
+  padding: 0;
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .category-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
   border-color: #2c5f2d;
+}
+
+/* カテゴリー画像コンテナ */
+.category-image-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.category-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover .category-image {
+  transform: scale(1.05);
+}
+
+/* カテゴリーカードのテキスト部分 */
+.category-card-body {
+  padding: 30px 25px;
 }
 
 .category-icon {
@@ -321,6 +349,157 @@
   margin: 0 auto;
 }
 
+/* ========================================
+   カテゴリーページ専用スタイル
+   ======================================== */
+
+/* ページヘッダー */
+.page-header {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #e8f5e8 0%, #ffffff 100%);
+  border-radius: 12px;
+  margin-bottom: 40px;
+}
+
+.back-link {
+  display: inline-block;
+  color: #4a9b4e;
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 20px;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: #2c5f2d;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.category-header-icon {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.category-header h1 {
+  color: #2c5f2d;
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+.category-header-description {
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto 15px;
+}
+
+.tour-count {
+  color: #4a9b4e;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin: 10px 0 0 0;
+}
+
+/* 画像コンテナ（重要） */
+.tour-image-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  background: #f5f5f5;
+}
+
+.tour-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* カードコンテンツ */
+.tour-card-content {
+  padding: 0;
+  text-align: left;
+}
+
+.tour-card-content h4 {
+  color: #2c5f2d;
+  font-size: 1.3rem;
+  margin: 0 0 10px 0;
+}
+
+.tour-description {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+/* メタ情報 */
+.tour-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.tour-meta-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.meta-label {
+  font-weight: 500;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.meta-value {
+  font-weight: bold;
+  color: #2c5f2d;
+  font-size: 0.95rem;
+}
+
+/* ツアーの注意事項 */
+.tour-note {
+  background: #fff9e6;
+  border-left: 3px solid #ffc107;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  color: #666;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.tour-note span {
+  margin-right: 5px;
+}
+
+/* ツアーがない場合 */
+.no-tours {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.no-tours p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
   .category-grid {
@@ -346,5 +525,17 @@
 
   .hero p {
     font-size: 1rem;
+  }
+
+  .category-header h1 {
+    font-size: 2rem;
+  }
+
+  .category-header-icon {
+    font-size: 2.5rem;
+  }
+
+  .page-header {
+    padding: 30px 15px;
   }
 }

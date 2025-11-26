@@ -6,7 +6,7 @@ import React from "react";
 
 // type vs interface の使い分け学習
 // type: union types、プリミティブ型に適している
-export type TourType = "safari" | "bridge" | "flight" | "water" | "cultural";
+export type TourType = "safari" | "victoria-falls" | "bridge" | "flight" | "water" | "cultural";
 export type FilterType = "all" | TourType;
 
 // ============================================
@@ -52,20 +52,30 @@ export interface Tour {
 // ============================================
 export interface Category {
   id: string;               // "safari", "bridge" など
-  name: string;             // "Safari & Victoria Falls"
+  name: string;             // "Safari Adventures"
   icon: string;             // "🦁"
   type: TourType;           // type と紐づけ
   description: string;      // カテゴリーの説明
+  image: string;            // カテゴリーの代表画像
 }
 
 // カテゴリー定数
 export const CATEGORIES: Category[] = [
   {
     id: "safari",
-    name: "Safari & Victoria Falls",
+    name: "Safari Adventures",
     icon: "🦁",
     type: "safari",
-    description: "ジンバブエの野生動物との出会いとビクトリアフォールズ",
+    description: "ジンバブエの野生動物との出会い",
+    image: "/images/tours/game-drive-2.jpg",
+  },
+  {
+    id: "victoria-falls",
+    name: "Victoria Falls",
+    icon: "💧",
+    type: "victoria-falls",
+    description: "世界三大瀑布のひとつ、ビクトリアフォールズを体験",
+    image: "/images/tours/tour-of-the-falls-12.jpg",
   },
   {
     id: "bridge",
@@ -73,6 +83,7 @@ export const CATEGORIES: Category[] = [
     icon: "🌉",
     type: "bridge",
     description: "ビクトリアフォールズブリッジでのスリリングな体験",
+    image: "/images/tours/bungee-jump.jpg",
   },
   {
     id: "flight",
@@ -80,6 +91,7 @@ export const CATEGORIES: Category[] = [
     icon: "🚁",
     type: "flight",
     description: "空から眺める壮大なビクトリアフォールズ",
+    image: "/images/tours/helicopter-experience.jpg",
   },
   {
     id: "water",
@@ -87,6 +99,7 @@ export const CATEGORIES: Category[] = [
     icon: "🚤",
     type: "water",
     description: "ザンベジ川でのエキサイティングなウォーターアクティビティ",
+    image: "/images/tours/white-water-rafting.jpg",
   },
   {
     id: "cultural",
@@ -94,6 +107,7 @@ export const CATEGORIES: Category[] = [
     icon: "🏛️",
     type: "cultural",
     description: "ジンバブエの文化と伝統を体験",
+    image: "/images/tours/traditional-village-tour-3.jpg",
   },
 ];
 
@@ -141,4 +155,6 @@ export interface ParsedPrice {
   min: number;
   max: number;
   display: string;
+
+
 }
